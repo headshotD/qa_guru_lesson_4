@@ -21,7 +21,7 @@ public class HomeWorkL4 {
 
     @Test
     @DisplayName("Загрузка страницы Enterprises с заголовком \"The AI-powered developer platform.\").")
-    void checkHeaderOnGitGubEnterprises() {
+    void checkHeaderOnGitGubEnterprisesTest() {
         open("/home");
         $(".HeaderMenu-nav").find(byText("Solutions")).hover();
         $$(".HeaderMenu-dropdown-link").findBy(text("Enterprises")).click();
@@ -31,10 +31,13 @@ public class HomeWorkL4 {
 
     @Test
     @DisplayName("Проверка dragAndDrop")
-    public void dragAndDrop() {
+    public void dragAndDropTest() {
+
         SelenideElement columnA = $x("//div[@id='column-a']");
         SelenideElement columnB = $x("//div[@id='column-b']");
         open("https://the-internet.herokuapp.com/drag_and_drop");
+        columnA.shouldHave(text("A"));
+        columnB.shouldHave(text("B"));
         $(columnA).dragAndDrop((DragAndDropOptions.to(columnB)));
         columnA.shouldHave(text("B"));
         columnB.shouldHave(text("A"));
@@ -42,10 +45,12 @@ public class HomeWorkL4 {
 
     @Test
     @DisplayName("Проверка dragAndDrop c использованием Actions")
-    public void dragAndDropWithActions() {
+    public void dragAndDropWithActionsTest() {
         SelenideElement columnA = $x("//div[@id='column-a']");
         SelenideElement columnB = $x("//div[@id='column-b']");
         open("https://the-internet.herokuapp.com/drag_and_drop");
+        columnA.shouldHave(text("A"));
+        columnB.shouldHave(text("B"));
         actions().moveToElement(columnA).clickAndHold().moveToElement(columnB).release().perform();
         columnA.shouldHave(text("B"));
         columnB.shouldHave(text("A"));
