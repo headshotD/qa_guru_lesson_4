@@ -1,10 +1,7 @@
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.DragAndDropOptions;
 import com.codeborne.selenide.SelenideElement;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
@@ -17,8 +14,8 @@ public class HomeWorkL4 {
         com.codeborne.selenide.Configuration.pageLoadStrategy = "eager";
     }
 
-    @AfterAll
-    static void closeChrome() {
+    @AfterEach
+    void closeChrome() {
         closeWebDriver();
     }
 
